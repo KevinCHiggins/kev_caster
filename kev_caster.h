@@ -34,7 +34,7 @@ typedef struct {
 	float y2;
 } kev_caster_line_segment;
 
-kev_caster_incidence get_incidence(float x1, float y1, float x2, float y2, kev_caster_grid *grid);
+kev_caster_incidence get_incidence(kev_caster_line_segment *seg, kev_caster_grid *grid);
 int flip_if_slope_exceeds_one(kev_caster_line_segment *seg);
 int rotate_to_ne_quadrant(kev_caster_line_segment *seg);
 

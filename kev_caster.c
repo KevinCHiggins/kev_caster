@@ -80,7 +80,7 @@ int rotate_to_ne_quadrant(kev_caster_line_segment *seg)
 	return rotations;
 }
 
-kev_caster_incidence get_incidence(float x1, float y1, float x2, float y2, kev_caster_grid *grid)
+kev_caster_incidence get_incidence(kev_caster_line_segment *seg, kev_caster_grid *grid)
 {
 	return (kev_caster_incidence){(kev_caster_material){0, 0.0, 0.0, 0.0}, 0.0, 0.0};
 }

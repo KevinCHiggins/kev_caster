@@ -216,7 +216,8 @@ void test_flipping()
 void test_pos_x_pos_y_hit_y_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 2.0, 1.6, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 2.0, 1.6};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     printf("%f\n", inc.offset);
     kev_test_assert_float_equal(inc.offset, 0.4);
     int texture_id = inc.mat.texture_id;
@@ -227,7 +228,8 @@ void test_pos_x_pos_y_hit_y_running_immediately()
 void test_pos_x_neg_y_hit_y_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 2.0, 0.2, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 2.0, 0.2};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.8);
     kev_test_assert_int_equal(inc.mat.texture_id, 1);
 }
@@ -236,7 +238,8 @@ void test_pos_x_neg_y_hit_y_running_immediately()
 void test_pos_x_pos_y_hit_x_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 1.8, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 1.8, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.8);
     kev_test_assert_int_equal(inc.mat.texture_id, 3);
 }
@@ -244,7 +247,8 @@ void test_pos_x_pos_y_hit_x_running_immediately()
 void test_pos_x_neg_y_hit_x_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 0.6, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 0.6, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.4);
     kev_test_assert_int_equal(inc.mat.texture_id, 7);
 }
@@ -253,7 +257,8 @@ void test_pos_x_neg_y_hit_x_running_immediately()
 void test_neg_x_pos_y_hit_y_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 0.0, 1.6, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 0.0, 1.6};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.6);
     kev_test_assert_int_equal(inc.mat.texture_id, 5);
 }
@@ -261,7 +266,8 @@ void test_neg_x_pos_y_hit_y_running_immediately()
 void test_neg_x_neg_y_hit_y_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 0.0, 0.2, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 0.0, 0.2};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.2);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);
 }
@@ -269,7 +275,8 @@ void test_neg_x_neg_y_hit_y_running_immediately()
 void test_neg_x_pos_y_hit_x_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 1.3, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 1.3, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.3);
     kev_test_assert_int_equal(inc.mat.texture_id, 3);
 }
@@ -277,7 +284,8 @@ void test_neg_x_pos_y_hit_x_running_immediately()
 void test_neg_x_neg_y_hit_x_running_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 0.4, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 0.4, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.6);
     kev_test_assert_int_equal(inc.mat.texture_id, 7);
 } 
@@ -286,7 +294,8 @@ void test_neg_x_neg_y_hit_x_running_immediately()
 void test_pos_x_pos_y_hit_y_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 2.0, 0.6, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 2.0, 0.6};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.4);
     kev_test_assert_int_equal(inc.mat.texture_id, 1);
 }
@@ -295,7 +304,8 @@ void test_pos_x_pos_y_hit_y_running_after()
 void test_pos_x_neg_y_hit_y_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 2.0, 0.1, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 2.0, 0.1};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.9);
     kev_test_assert_int_equal(inc.mat.texture_id, 1);
 }
@@ -304,7 +314,8 @@ void test_pos_x_neg_y_hit_y_running_after()
 void test_pos_x_pos_y_hit_x_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 1.8, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 1.8, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.8);
     kev_test_assert_int_equal(inc.mat.texture_id, 3);
 }
@@ -312,7 +323,8 @@ void test_pos_x_pos_y_hit_x_running_after()
 void test_pos_x_neg_y_hit_x_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 0.6, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 0.6, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.4);
     kev_test_assert_int_equal(inc.mat.texture_id, 7);
 }
@@ -323,7 +335,8 @@ void test_pos_x_neg_y_hit_x_running_after()
 void test_neg_x_pos_y_hit_y_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 0.0, 0.6, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 0.0, 0.6};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.6);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);
 }
@@ -332,7 +345,8 @@ void test_neg_x_pos_y_hit_y_running_after()
 void test_neg_x_neg_y_hit_y_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 0.0, 0.1, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 0.0, 0.1};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.1);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);
 }
@@ -340,7 +354,8 @@ void test_neg_x_neg_y_hit_y_running_after()
 void test_neg_x_pos_y_hit_x_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 1.3, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 1.3, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.3);
     kev_test_assert_int_equal(inc.mat.texture_id, 3);
 }
@@ -349,7 +364,8 @@ void test_neg_x_pos_y_hit_x_running_after()
 void test_neg_x_neg_y_hit_x_running_after()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 0.4, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 0.4, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.6);
     kev_test_assert_int_equal(inc.mat.texture_id, 7);
 }
@@ -361,7 +377,8 @@ void test_neg_x_neg_y_hit_x_running_after()
 void test_pos_x_pos_y_hit_y_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 2.0, 1.6, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 2.0, 1.6};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.4);
     kev_test_assert_int_equal(inc.mat.texture_id, 2);
 }
@@ -371,7 +388,8 @@ void test_pos_x_pos_y_hit_y_running_after_diag()
 void test_pos_x_neg_y_hit_y_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 2.0, 0.1, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 2.0, 0.1};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.9);
     kev_test_assert_int_equal(inc.mat.texture_id, 1);
 }
@@ -382,7 +400,8 @@ void test_pos_x_neg_y_hit_y_running_after_diag()
 void test_pos_x_pos_y_hit_x_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 1.8, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 1.8, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.8);
     kev_test_assert_int_equal(inc.mat.texture_id, 3);
 }
@@ -393,7 +412,8 @@ void test_pos_x_pos_y_hit_x_running_after_diag()
 void test_pos_x_neg_y_hit_x_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 1.6, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 1.6, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.4);
     kev_test_assert_int_equal(inc.mat.texture_id, 8);
 }
@@ -404,7 +424,8 @@ void test_pos_x_neg_y_hit_x_running_after_diag()
 void test_neg_x_pos_y_hit_y_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 0.0, 1.6, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 0.0, 1.6};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.6);
     kev_test_assert_int_equal(inc.mat.texture_id, 5);
 }
@@ -413,7 +434,8 @@ void test_neg_x_pos_y_hit_y_running_after_diag()
 void test_neg_x_neg_y_hit_y_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 0.0, 0.1, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 0.0, 0.1};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.1);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);
 }
@@ -421,7 +443,8 @@ void test_neg_x_neg_y_hit_y_running_after_diag()
 void test_neg_x_pos_y_hit_x_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 0.3, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 0.3, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.3);
     kev_test_assert_int_equal(inc.mat.texture_id, 4);
 }
@@ -429,7 +452,8 @@ void test_neg_x_pos_y_hit_x_running_after_diag()
 void test_neg_x_neg_y_hit_x_running_after_diag()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 0.4, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 0.4, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.6);
     kev_test_assert_int_equal(inc.mat.texture_id, 7);
 }
@@ -439,7 +463,8 @@ void test_neg_x_neg_y_hit_x_running_after_diag()
 void test_pos_x_pos_y_hit_corner_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 1.2, 2.0, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.2, 2.0, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 2);
 }
@@ -447,7 +472,8 @@ void test_pos_x_pos_y_hit_corner_immediately()
 void test_pos_x_neg_y_hit_corner_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.2, 2.0, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.2, 2.0, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 8);
 }
@@ -455,7 +481,8 @@ void test_pos_x_neg_y_hit_corner_immediately()
 void test_neg_x_pos_y_hit_corner_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 0.0, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 0.0, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 4);
 }
@@ -463,7 +490,8 @@ void test_neg_x_pos_y_hit_corner_immediately()
 void test_neg_x_neg_y_hit_corner_immediately()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 0.0, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 0.0, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);
 
@@ -473,7 +501,8 @@ void test_neg_x_neg_y_hit_corner_immediately()
 void test_pos_x_pos_y_hit_corner_thru_corner()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 2.0, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 2.0, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 2);
 }
@@ -481,7 +510,8 @@ void test_pos_x_pos_y_hit_corner_thru_corner()
 void test_pos_x_neg_y_hit_corner_thru_corner()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 1.5, 2.0, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 1.5, 2.0, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 8);
 }
@@ -489,14 +519,16 @@ void test_pos_x_neg_y_hit_corner_thru_corner()
 void test_neg_x_pos_y_hit_corner_thru_corner()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 0.0, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 0.0, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 4);
 }
 
 void test_neg_x_neg_y_hit_corner_thru_corner()
 {
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 0.0, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 0.0, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.0);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);   
 
@@ -507,7 +539,8 @@ void test_neg_x_neg_y_hit_corner_thru_corner()
 void test_pos_x()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 2.0, 0.5, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 2.0, 0.5};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.5);
     kev_test_assert_int_equal(inc.mat.texture_id, 1);
 }
@@ -515,7 +548,8 @@ void test_pos_x()
 void test_pos_y()
 {
 
-    kev_caster_incidence inc = get_incidence(0.5, 0.5, 0.5, 2.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){0.5, 0.5, 0.5, 2.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.5);
     kev_test_assert_int_equal(inc.mat.texture_id, 4);
 }
@@ -523,14 +557,16 @@ void test_pos_y()
 void test_neg_x()
 {
 
-    kev_caster_incidence inc = get_incidence(1.5, 0.5, 0.0, 0.5, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 0.5, 0.0, 0.5};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.5);
     kev_test_assert_int_equal(inc.mat.texture_id, 6);
 }
 
 void test_neg_y()
 {
-    kev_caster_incidence inc = get_incidence(1.5, 1.5, 1.5, 0.0, &grid);
+    kev_caster_line_segment seg = (kev_caster_line_segment){1.5, 1.5, 1.5, 0.0};
+    kev_caster_incidence inc = get_incidence(&seg, &grid);
     kev_test_assert_float_equal(inc.offset, 0.5);
     kev_test_assert_int_equal(inc.mat.texture_id, 8);   
 
