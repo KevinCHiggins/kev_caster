@@ -21,7 +21,22 @@ typedef struct {
 	float c;
 } kev_caster_ray;
 
-float get_incidence(float x1, float y1, float x2, float y2, kev_caster_grid grid, kev_caster_material *mat);
+typedef struct {
+	kev_caster_material mat;
+	float offset;
+	float dist;
+} kev_caster_incidence;
+
+typedef struct {
+	float x1;
+	float y1;
+	float x2;
+	float y2;
+} kev_caster_line_segment;
+
+kev_caster_incidence get_incidence(float x1, float y1, float x2, float y2, kev_caster_grid *grid);
+int flip_if_slope_exceeds_one(kev_caster_line_segment *seg);
+int rotate_to_ne_quadrant(kev_caster_line_segment *seg);
 
 
 #define kev_caster_x_running_front(grid, x, y) grid.data[y * (grid.x_size * 4) + (x * 4)]
