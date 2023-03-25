@@ -9,8 +9,8 @@ typedef struct {
 
 
 typedef struct {
-	size_t x_size;
-	size_t y_size;
+	int x_size;
+	int y_size;
 	kev_caster_material *data;
 } kev_caster_grid;
 
@@ -34,12 +34,18 @@ typedef struct {
 	float y2;
 } kev_caster_line_segment;
 
-kev_caster_incidence get_incidence(kev_caster_line_segment *seg, kev_caster_grid *grid);
-int flip_if_slope_exceeds_one(kev_caster_line_segment *seg);
+typedef struct {
+	int *x_counter;
+	int *y_counter;
+	float m;
+	float c;
+	int face_to_check;
+    int grid_point_y_offset;
+} kev_caster_ray_state;
+
+kev_caster_incidence get_incidence(kev_caster_line_segment seg, kev_caster_grid *grid);
+kev_caster_line_segment flip(kev_caster_line_segment seg);
 int rotate_to_ne_quadrant(kev_caster_line_segment *seg);
 
-
-#define kev_caster_x_running_front(grid, x, y) grid.data[y * (grid.x_size * 4) + (x * 4)]
-#define kev_caster_x_running_back(grid, x, y) grid.data[y * (grid.x_size * 4) + (x * 4) + 1]
-#define kev_caster_y_running_front(grid, x, y) grid.data[y * (grid.x_size * 4) + (x * 4) + 2]
-#define kev_caster_y_running_back(grid, x, y) grid.data[y * (grid.x_size * 4) + (x * 4) + 3]
+#define kev_caster_get_face_index(grid_ptr, x, y, face) (y) * ((grid_ptr)->x_size * 4) + ((x) * 4) + face
+#define kev_caster_get_face(grid_ptr, x, y, face) (grid_ptr)->data[y * ((grid_ptr)->x_size * 4) + (x * 4) + face]
