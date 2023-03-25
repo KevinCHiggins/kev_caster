@@ -4,9 +4,9 @@ An algorithm for detecting ray intersections in a 2D map of walls at 90-degree a
 
 To run the tests, go into kev_caster_test, and execute:
 
-``shell
+```shell
 make
 ./kev_caster_test
-``
+```
 
 Kevin Higgins, 25/03/23
